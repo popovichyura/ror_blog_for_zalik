@@ -37,7 +37,7 @@ gem 'activeadmin'
 gem 'tinymce-rails'
 
 
-group :production
+group :production do
 gem 'pg'
  end
 
