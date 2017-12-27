@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
 belongs_to :user
-has_many :postcomment
+has_many :postcomments
 
 end

@@ -8,6 +8,7 @@
 <p>
   <strong>Body:</strong>
   <%= @post.body %>
+  <%= tinymce %><br/>
 </p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
@@ -15,15 +16,17 @@
 
 
 <% @comments.each do |comment| %>
+<%=comment.text%>
+<% end%>
 
-<%= form_for :postscomment, url: post_postscomments_path(@post.id) do |post| %>
+<%= form_for :postscomment, url: post_postscomments_path(@post.id) do |f| %>
 
-<% if flash[:notice] %>
-<div class="notice"> <%= flash[:notice] %> </div>
-<% end %>
-<div align="center">
-<p><%= post.label "Write Comment" %></p>
-<%= post.text_area :comtext, cols: 10, rows: 5 %><br />
-<br/>
-<p><%= post.submit "Send", class: "btn btn-primary active"%></p><br/>
+    <% if flash[:notice] %>
+        <div class="notice"> <%= flash[:notice] %> </div>
+    <% end %>
+    <div align="center">
+    <p><%= f.label "Write Comment" %></p>
+    <%= f.text_area :comtext, cols: 10, rows: 5 %><br />
+    <br/>
+    <p><%= f.submit "Send", class: "btn btn-primary active"%></p><br/>
 <%end%>

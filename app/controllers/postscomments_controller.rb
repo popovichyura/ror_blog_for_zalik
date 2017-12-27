@@ -1,4 +1,6 @@
 class PostscommentsController < ApplicationController
+	before_action :authenticate_user!
+
 def create
 params[:postscomment][:post_id] = params[:article_id]
 params[:postscomment][:user_id] = current_user.id
@@ -16,7 +18,7 @@ end
 
 private
 def postscomments_params
-params.require(:postscomment).permit(:user_id, :posts_id, :textofcom)
+params.require(:postscomment).permit(:user_id, :posts_id, :text)
 
 end
 
