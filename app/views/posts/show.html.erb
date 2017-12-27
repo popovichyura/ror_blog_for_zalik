@@ -1,22 +1,20 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="panel panel-default">
+        <div class="panel-body"><h3><%= @post.title %></h3></div><br>
+        <div class="panel-footer"><h4><%= @post.body %></h4>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-  <%= tinymce %><br/>
-</p>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>
-
+</div>
 
 <% @comments.each do |comment| %>
-<%=comment.text%>
+<div class="panel panel-info">
+        <div class="panel-body"><h3><%= comment.user.nickname %></h3></div>
+        <div class="panel-footer"><h4><%=comment.text%></h4></div>
+  </div>
+
 <% end%>
 
 <%= form_for :postscomment, url: post_postscomments_path(@post.id) do |f| %>
@@ -28,5 +26,5 @@
     <p><%= f.label "Write Comment" %></p>
     <%= f.text_area :text, cols: 10, rows: 5 %><br />
     <br/>
-    <p><%= f.submit "Send", class: "btn btn-primary active"%></p><br/>
+    <p><%= f.submit "Send", class: "btn btn-primary active"%></p><br/></div>
 <%end%>
